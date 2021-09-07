@@ -1,0 +1,36 @@
+﻿@model ProCondutor.Web.Models.ClienteViewModel
+
+
+<form asp-action="Salvar" asp-controller="Cliente" method="post">
+
+    <div class="row">
+        <div class="col-md-7">
+            <label>Nome</label>
+            <input class="form-control" asp-for="@Model.Cliente.Nome" autocomplete="off" required type="text" />
+        </div>
+
+        <div class="col-sm-3">
+            <label>Data de Nascimento</label>
+            <input class="form-control" asp-for="@Model.Cliente.DataNascimento" autocomplete="off" required type="date" />
+        </div>
+
+        <div class="col-sm-2 text-center">
+            <label>Ativo</label><br />
+            <input asp-for="@Model.Cliente.Ativo" type="checkbox" />
+        </div>
+    </div>
+
+
+    <div class="row mt-5">
+        <div class="col-sm-7">
+            <label>Observação</label>
+            <textarea class="form-control" asp-for="@Model.Cliente.Observacao" autocomplete="off" type="text"></textarea>
+        </div>
+        <div class="col-sm-5 mt-4">
+            <label>&nbsp;</label>
+            <button class="btn btn-secondary" asp-action="Index" asp-controller="Home">Voltar</button>
+            <button class="btn btn-dark">Salvar</button>
+        </div>
+    </div>
+
+</form>

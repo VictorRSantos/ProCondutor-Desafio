@@ -1,0 +1,62 @@
+﻿@model ProCondutor.Web.Models.ClienteViewModel
+
+@{
+    ViewData["Title"] = "Editar - ProCondutor";
+}
+
+<div class="row justify-content-center"><h2 class="text-center mt-5">Editar Cliente</h2></div>
+<hr />
+<form asp-action="Editar" asp-controller="Cliente" method="post">
+    @Html.HiddenFor(x => x.Cliente.Id)
+    <div class="row">
+        <div class="col-md-7">
+            <label>Nome</label>
+            <input class="form-control" asp-for="@Model.Cliente.Nome" autocomplete="off" required type="text" />
+        </div>
+
+        <div class="col-sm-3">
+            <label>Data de Nascimento</label>
+            <input class="form-control" asp-for="@Model.Cliente.DataNascimento" autocomplete="off" required type="date" />
+        </div>
+
+        <div class="col-sm-2 text-center">
+            <label>Ativo</label><br />
+            <input asp-for="@Model.Cliente.Ativo" type="checkbox" />
+        </div>
+    </div>
+
+
+    <div class="row mt-5">
+        <div class="col-sm-7">
+            <label>Observação</label>
+            <textarea class="form-control" asp-for="@Model.Cliente.Observacao" autocomplete="off" type="text"></textarea>
+        </div>
+        <div class="col-sm-5 mt-4">
+            <label>&nbsp;</label>
+            <button class="btn btn-secondary">Voltar</button>
+            <button class="btn btn-dark">Editar</button>
+        </div>
+    </div>
+   
+    <section class="mt-5">
+        <table class="table table-striped table-responsive-md table-bordered">
+            <thead>
+                <tr class="text-center">
+                    <th>Nome</th>
+                    <th>Data de Nascimento</th>
+                    <th>Observação</th>
+                    <th>Ativo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-center">
+                    <th>@Model.Cliente.Nome</th>
+                    <th>@Model.Cliente.DataNascimento.ToShortDateString()</th>
+                    <th>@Model.Cliente.Observacao</th>
+                    <td><i class="@(Model.Cliente.Ativo == true ? "bx bxs-user-check text-success" : "bx bxs-user-x text-danger")"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</form>

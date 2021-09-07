@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - ProCondutor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/style-layout-padrao.css" />
+    <link rel="stylesheet" href="~/DataTables/DataTables-1.10.25/css/dataTables.bootstrap5.min.css" />
+    <!--Boxicons CND Link -->
+    <link href='https://unpkg.com/boxicons@2.0.8/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bxl-c-plus-plus icon'></i>
+            <div class="logo_name">ProCondutor</div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+
+            <li>
+                <a asp-controller="Cliente" asp-action="Index">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Cliente</span>
+                </a>
+                <span class="tooltip">Cliente</span>
+            </li>
+
+            <li class="profile">
+                <div class="profile-details">
+                    <img src="" alt="profileImg">
+                    <div class="name_job">
+                        <div class="name">ProCondutor</div>
+                        <div class="job">ProCondutor</div>
+                    </div>
+                </div>
+                <i class='bx bx-log-out' id="log_out"></i>
+            </li>
+        </ul>
+    </div>
+
+
+    <section class="home-section p-1">
+        <div class="container-card container">
+            @RenderBody()
+        </div>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2021 - ProCondutor - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    </section>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/DataTables/datatables.min.js"></script>
+    <script src="~/DataTables/DataTables-1.10.25/js/dataTables.bootstrap5.min.js"></script>
+    <script src="~/js/scriptMenu.js"></script>
+    <script src="~/js/scriptDataTable.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
