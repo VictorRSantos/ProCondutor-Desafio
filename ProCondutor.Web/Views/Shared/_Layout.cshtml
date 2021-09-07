@@ -67,6 +67,7 @@
     <script src="~/DataTables/DataTables-1.10.25/js/dataTables.bootstrap5.min.js"></script>
     <script src="~/js/scriptMenu.js"></script>
     <script src="~/js/scriptDataTable.js"></script>
+    @await Component.InvokeAsync("Notyf")
     @RenderSection("Scripts", required: false)
 </body>
 </html>

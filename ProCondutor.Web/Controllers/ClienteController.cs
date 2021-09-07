@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -20,17 +21,18 @@ namespace ProCondutor.Web.Controllers
         private readonly ClienteViewModel model = new ClienteViewModel();
         private readonly Uri uri;
         private readonly UrlAPI _configuration;
+        private readonly INotyfService _notfy;
 
-
-        public ClienteController(UrlAPI configuration)
+        public ClienteController(UrlAPI configuration, INotyfService notyf)
         {
             _configuration = configuration;
+            _notfy = notyf;
             uri = new Uri($"{_configuration.URL}");
         }
         public async Task<IActionResult> Index()
         {
 
-           
+
             using (var httpClient = new HttpClient())
             {
 
@@ -55,6 +57,7 @@ namespace ProCondutor.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Salvar(Cliente cliente)
         {
+            
 
             using (var httpClient = new HttpClient())
             {
@@ -62,12 +65,20 @@ namespace ProCondutor.Web.Controllers
 
                 using (var response = await httpClient.PostAsync($"{uri.AbsoluteUri}/api/Cliente", content))
                 {
+
                     string apiResponse = await response.Content.ReadAsStringAsync();
+                    NotfyResposta(response.IsSuccessStatusCode);
+
 
                 }
+
+
             }
+
+
             return RedirectToAction("Index");
         }
+             
 
         [HttpGet]
         public async Task<IActionResult> Editar(int id)
@@ -85,7 +96,7 @@ namespace ProCondutor.Web.Controllers
             return View("Editar", model);
         }
 
-        [HttpPost]     
+        [HttpPost]
         public async Task<IActionResult> Editar(Cliente cliente)
         {
 
@@ -96,15 +107,16 @@ namespace ProCondutor.Web.Controllers
                 using (var response = await httpClient.PutAsync($"{uri.AbsoluteUri}/api/Cliente/{cliente.Id}", content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
+                    NotfyResposta(response.IsSuccessStatusCode);
 
                 }
             }
             return RedirectToAction("Index");
 
-         
+
         }
-              
-      
+
+
         public async Task<IActionResult> Excluir(int Id)
         {
             using (var httpClient = new HttpClient())
@@ -112,13 +124,25 @@ namespace ProCondutor.Web.Controllers
                 using (var response = await httpClient.DeleteAsync($"{uri.AbsoluteUri}/api/Cliente/{Id}"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
+                    NotfyResposta(response.IsSuccessStatusCode);
                 }
             }
 
             return RedirectToAction("Index");
         }
 
+        private void NotfyResposta(bool isSuccessStatusCode)
+        {
+            if (isSuccessStatusCode)
+            {
+                _notfy.Success("Sucesso");
+            }
+            else
+            {
+                _notfy.Error("Verificar string de conexão do banco de dados");
+            }
 
+        }
     }
 
 }
