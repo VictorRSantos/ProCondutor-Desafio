@@ -9,13 +9,15 @@
     
 }
 
+
+
 .sidebar {
     position: fixed;
     left: 0;
     top: 0;
     height: 100%;
     width: 78px;
-    background: #2B88D9;
+    background: #6610f2;
     padding: 6px 14px;
     z-index: 99;
     transition: all 0.5s ease;
@@ -135,7 +137,7 @@
     }
 
     .sidebar.open {
-        background: #2B88D9;
+        background: #6f42c1;
         color: #FFF;
     }
 
@@ -147,7 +149,7 @@
         align-items: center;
         text-decoration: none;
         transition: all 0.4s ease;
-        background: #F29422;
+        background: #f65275;
     }
 
         .sidebar li a:hover {
@@ -172,7 +174,7 @@
     .sidebar li a:hover .links_name,
     .sidebar li a:hover i {
         transition: all 0.5s ease;
-        color: #2B88D9;
+        color: #f65275;
     }
 
     .sidebar li i {
@@ -189,7 +191,7 @@
         left: 0;
         bottom: -8px;
         padding: 10px 14px;
-        background: #F29422;
+        background: #f65275;
         transition: all 0.5s ease;
         overflow: hidden;
     }
@@ -229,7 +231,7 @@
         top: 50%;
         right: 0;
         transform: translateY(-50%);
-        background: #F29422;
+        background: #f65275;
         width: 100%;
         height: 60px;
         line-height: 60px;

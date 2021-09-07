@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewData["Title"] - ProCondutor</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/logo-alpha.png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/style.css" />
     <link rel="stylesheet" href="~/css/style-layout-padrao.css" />
@@ -10,11 +12,15 @@
     <!--Boxicons CND Link -->
     <link href='https://unpkg.com/boxicons@2.0.8/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    
 </head>
 <body>
     <div class="sidebar">
         <div class="logo-details">
-            <i class='bx bxl-c-plus-plus icon'></i>
+           <i class='bx bx-car icon'></i>
+            
             <div class="logo_name">ProCondutor</div>
             <i class='bx bx-menu' id="btn"></i>
         </div>
@@ -30,7 +36,7 @@
 
             <li class="profile">
                 <div class="profile-details">
-                    <img src="" alt="profileImg">
+                    <img src="~/img/profileImg.png" alt="profileImg">
                     <div class="name_job">
                         <div class="name">ProCondutor</div>
                         <div class="job">ProCondutor</div>
@@ -46,9 +52,9 @@
         <div class="container-card container">
             @RenderBody()
         </div>
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2021 - ProCondutor - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <footer class="border-top footer text-muted mt-5">
+            <div class="container align-content-center">
+                &copy; 2021 - ProCondutor by Victor Rodrigues dos Santos <a asp-area="" asp-controller="Home"></a>
             </div>
         </footer>
     </section>
